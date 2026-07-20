@@ -264,3 +264,33 @@ The switch detected the MAC address violation and automatically placed the inter
 
 ![Port Security Status](screenshots/port-security-status.png)
 
+---
+
+## Network Validation
+
+The enterprise network was successfully tested after implementation to verify connectivity, routing, security, and network services.
+
+### Validation Results
+
+| Test | Status |
+|------|--------|
+| VLAN Connectivity | ✅ Passed |
+| Inter-VLAN Routing | ✅ Passed |
+| DHCP Address Assignment | ✅ Passed |
+| DNS Name Resolution | ✅ Passed |
+| HTTP Web Access | ✅ Passed |
+| SSH Remote Login | ✅ Passed |
+| Static Routing | ✅ Passed |
+| RIPv2 Route Learning | ✅ Passed |
+| Static NAT Translation | ✅ Passed |
+| Port Security Enforcement | ✅ Passed |
+
+### Testing Evidence
+
+- DHCP clients successfully received IP addresses.
+- DNS resolved `www.cisco` successfully.
+- HTTP server was accessible through the browser.
+- SSH remote login succeeded from R2 to R1.
+- Static and dynamic routing tables were verified.
+- NAT translation entries were successfully created.
+- Port Security blocked unauthorized devices automatically.
