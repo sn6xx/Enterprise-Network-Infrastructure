@@ -11,6 +11,7 @@ The network was designed to simulate a real enterprise environment with multiple
 ## Project Topology
 
 ![Network Topology](screenshots/topology.png)
+
 --- 
 
 ## Features
@@ -29,6 +30,7 @@ The network was designed to simulate a real enterprise environment with multiple
 - Telnet Remote Access
 - Switch Port Security
 - End-to-End Connectivity Testing
+
 ---
 
 ## VLAN Configuration
@@ -41,6 +43,7 @@ The enterprise network was segmented using Virtual LANs (VLANs) to improve secur
 | VLAN 20 | Server Network | HTTP Server, DNS Server, DHCP Server, PC1, PC2 |
 
 A trunk link was configured between SW1 and SW2 to allow VLAN traffic between switches.
+
 ---
 
 ## VLAN & Inter-VLAN Routing
@@ -60,9 +63,12 @@ Two IEEE 802.1Q trunk links were configured:
 - SW2 ↔ R1
 
 Router R1 was configured with subinterfaces for VLAN 10 and VLAN 20 to enable communication between VLANs.
+
 ---
 
 ## DHCP Configuration
+
+![DHCP Server](screenshots/dhcp-server.png)
 
 A dedicated DHCP server was configured to automatically assign IP addresses to devices in the Server Network.
 
@@ -79,3 +85,20 @@ A dedicated DHCP server was configured to automatically assign IP addresses to d
 
 The DHCP service automatically assigns network configuration to client devices, reducing manual configuration and improving network management.
 
+---
+
+## DNS Configuration
+
+A dedicated DNS server was configured to provide hostname resolution for internal services within the enterprise network.
+
+### DNS Record
+
+| Hostname | Record Type | IP Address |
+|----------|-------------|------------|
+| www.cisco | A Record | 192.168.20.4 |
+
+The DNS server allows clients to access the web server using its hostname instead of the IP address.
+
+### DNS Server
+
+![DNS Server](screenshots/dns-server.png)
