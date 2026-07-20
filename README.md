@@ -1,10 +1,10 @@
-# Enterprise Network Infrastructure
+# Secure Enterprise Network Infrastructure
 
 ## Overview
 
-This project demonstrates the design and implementation of a secure enterprise network using Cisco Packet Tracer.
+This project demonstrates the design, implementation, and validation of a secure enterprise network using Cisco Packet Tracer.
 
-The network was designed to simulate a real enterprise environment with multiple LANs, routing protocols, network services, remote management, and security features.
+The network simulates a real-world enterprise environment by integrating routing, switching, network services, remote management, and security technologies across multiple interconnected sites.
 
 ---
 
@@ -12,65 +12,48 @@ The network was designed to simulate a real enterprise environment with multiple
 
 ![Network Topology](screenshots/topology.png)
 
---- 
+---
 
 ## Features
 
 - Multi-router enterprise network topology
-- VLAN segmentation (VLAN 10 & VLAN 20)
-- Inter-VLAN Routing
+- VLAN Segmentation
+- Router-on-a-Stick (Inter-VLAN Routing)
 - Static Routing
-- RIP Routing
+- RIPv2 Dynamic Routing
 - Default Route
 - DHCP Server
 - DNS Server
 - HTTP Server
-- Network Address Translation (NAT)
+- Static NAT
 - SSH Remote Management
-- Telnet Remote Access
-- Switch Port Security
-- End-to-End Connectivity Testing
+- Telnet Connectivity Testing
+- Port Security
+- Network Validation & Connectivity Testing
 
 ---
 
-## VLAN Configuration
+## VLANs & Inter-VLAN Routing
 
-The enterprise network was segmented using Virtual LANs (VLANs) to improve security and reduce broadcast traffic.
+The enterprise network was segmented using Virtual LANs (VLANs) to improve network organization, reduce broadcast traffic, and enhance security.
 
 | VLAN | Purpose | Connected Devices |
 |------|---------|-------------------|
 | VLAN 10 | User Network | PC3, PC4 |
 | VLAN 20 | Server Network | HTTP Server, DNS Server, DHCP Server, PC1, PC2 |
 
-A trunk link was configured between SW1 and SW2 to allow VLAN traffic between switches.
-
----
-
-## VLAN & Inter-VLAN Routing
-
-The enterprise network was segmented using VLANs to improve network organization and security.
-
-| VLAN | Purpose |
-|------|---------|
-| VLAN 10 | User Network |
-| VLAN 20 | Server Network |
-
-Inter-VLAN Routing was implemented using the Router-on-a-Stick technique.
-
 Two IEEE 802.1Q trunk links were configured:
 
 - SW1 ↔ SW2
 - SW2 ↔ R1
 
-Router R1 was configured with subinterfaces for VLAN 10 and VLAN 20 to enable communication between VLANs.
+Inter-VLAN communication was implemented using the Router-on-a-Stick technique. Router R1 was configured with dedicated subinterfaces for VLAN 10 and VLAN 20, allowing secure communication between both VLANs.
 
 ---
 
 ## DHCP Configuration
 
-![DHCP Server](screenshots/dhcp-server.png)
-
-A dedicated DHCP server was configured to automatically assign IP addresses to devices in the Server Network.
+A dedicated DHCP server was configured to automatically assign IP addresses to devices within the Server Network.
 
 ### DHCP Settings
 
@@ -83,13 +66,17 @@ A dedicated DHCP server was configured to automatically assign IP addresses to d
 | Start IP Address | 192.168.20.5 |
 | Maximum Users | 251 |
 
-The DHCP service automatically assigns network configuration to client devices, reducing manual configuration and improving network management.
+The DHCP service automatically distributes IP configuration to client devices, reducing manual configuration and simplifying network management.
+
+### DHCP Server
+
+![DHCP Server](screenshots/dhcp-server.png)
 
 ---
 
 ## DNS Configuration
 
-A dedicated DNS server was configured to provide hostname resolution for internal services within the enterprise network.
+A dedicated DNS server was configured to resolve internal hostnames within the enterprise network.
 
 ### DNS Record
 
@@ -97,7 +84,7 @@ A dedicated DNS server was configured to provide hostname resolution for interna
 |----------|-------------|------------|
 | www.cisco | A Record | 192.168.20.4 |
 
-The DNS server allows clients to access the web server using its hostname instead of the IP address.
+The DNS server enables users to access internal services using hostnames instead of IP addresses.
 
 ### DNS Server
 
@@ -109,21 +96,21 @@ The DNS server allows clients to access the web server using its hostname instea
 
 An internal web server was deployed and successfully accessed through DNS hostname resolution.
 
-### Validation
+### Verification
 
-The website was accessed using:
+The website was successfully accessed using:
 
-```
+```text
 http://www.cisco
 ```
 
-This confirms the successful integration of:
+This validates:
 
 - DNS name resolution
-- HTTP service
+- HTTP service availability
 - End-to-end network connectivity
 
-### HTTP Test
+### HTTP Verification
 
 ![HTTP Test](screenshots/http-test.png)
 
@@ -131,26 +118,26 @@ This confirms the successful integration of:
 
 ## SSH Remote Management
 
-Secure Shell (SSH) was configured on **Router R1** to provide secure remote administration.
+Secure Shell (SSH) was configured on Router R1 to provide secure remote administration.
 
 ### Configuration
 
 - Local user authentication
-- RSA (2048-bit) encryption keys
+- 2048-bit RSA key pair
 - SSH enabled on VTY lines
-- Domain name configured: `NETWORK.LOCAL`
+- Domain name configured (NETWORK.LOCAL)
 
 ### Verification
 
-SSH connectivity was successfully verified by establishing a remote session from **R2** to **R1** using:
+SSH connectivity was successfully verified by establishing a secure remote session from Router R2 to Router R1.
 
 ```text
 ssh -l saja 10.10.1.1
 ```
 
-Successful authentication confirmed secure remote management between network devices.
+Successful authentication confirmed secure remote management between enterprise network devices.
 
-### SSH Test
+### SSH Verification
 
 ![SSH Login](screenshots/ssh-login.png)
 
@@ -158,7 +145,7 @@ Successful authentication confirmed secure remote management between network dev
 
 ## Network Address Translation (NAT)
 
-Static Network Address Translation (Static NAT) was implemented to provide address translation between internal and external networks.
+Static Network Address Translation (Static NAT) was implemented to provide communication between internal and external networks.
 
 ### NAT Translation
 
@@ -168,7 +155,7 @@ Static Network Address Translation (Static NAT) was implemented to provide addre
 
 ### Verification
 
-The translation table confirmed successful NAT operation during network communication.
+The NAT translation table confirmed successful address translation during communication.
 
 ### NAT Verification
 
@@ -178,22 +165,22 @@ The translation table confirmed successful NAT operation during network communic
 
 ## Routing Configuration
 
-The enterprise network uses a hybrid routing design combining **Static Routing**, **RIPv2**, and a **Default Route** to provide connectivity between headquarters, branch offices, and external networks.
+The enterprise network uses a hybrid routing design combining Static Routing, RIPv2, and a Default Route to provide connectivity between headquarters, branch offices, and external networks.
 
 ### Routing Technologies
 
 - Static Routing
-- RIP Version 2 (RIPv2)
+- RIPv2 Dynamic Routing
 - Default Route
-- Router-on-a-Stick (Inter-VLAN Routing)
+- Router-on-a-Stick
 
 ### Static Routing
 
-Static routes were configured between enterprise routers to provide connectivity to selected remote networks.
+Static routes were configured on enterprise routers to provide deterministic paths toward selected remote networks.
 
 ### Dynamic Routing (RIPv2)
 
-RIPv2 was implemented on **R2**, **R3**, and **R4** to dynamically exchange routing information between enterprise network segments.
+RIPv2 was implemented on R2, R3, and R4 to dynamically exchange routing information across WAN links.
 
 Features:
 
@@ -203,7 +190,7 @@ Features:
 
 ### Default Route
 
-A default route was configured on **R4** to forward unknown traffic toward the external network.
+A default route was configured on R4 to forward unknown traffic toward the external network.
 
 ### Verification Evidence
 
@@ -211,11 +198,11 @@ A default route was configured on **R4** to forward unknown traffic toward the e
 
 ![R1 Routing Table](screenshots/r1-routing-table.png)
 
-**R2 - Static + RIPv2**
+**R2 - Static Routing + RIPv2**
 
 ![R2 Routing Table](screenshots/r2-routing-table.png)
 
-**R3 - Static +  RIPv2**
+**R3 - Static Routing + RIPv2**
 
 ![R3 Routing Table](screenshots/r3-routing-table.png)
 
@@ -227,11 +214,17 @@ A default route was configured on **R4** to forward unknown traffic toward the e
 
 ![R5 Routing Table](screenshots/r5-routing-table.png)
 
-**RIP Version 2**
+### RIPv2 Verification
+
+**R2**
 
 ![R2 RIP](screenshots/r2-rip.png)
 
+**R3**
+
 ![R3 RIP](screenshots/r3-rip.png)
+
+**R4**
 
 ![R4 RIP](screenshots/r4-rip.png)
 
@@ -246,17 +239,17 @@ Port Security was configured on access switch ports to prevent unauthorized devi
 - Maximum Secure MAC Address: 1
 - Sticky MAC Address Learning
 - Violation Mode: Shutdown
-- Unauthorized devices automatically blocked
+- Automatic interface shutdown upon MAC address violation
 
 ### Security Test
 
 An unauthorized device (**PC5**) was connected to a protected switch port.
 
-The switch detected the MAC address violation and automatically placed the interface into a **shutdown** state, successfully preventing unauthorized network access.
+The switch detected the MAC address violation and automatically placed the interface into a shutdown state, successfully preventing unauthorized network access.
 
 ### Verification Evidence
 
-**Unauthorized Device Attempt**
+**Unauthorized Device**
 
 ![Unauthorized Device](screenshots/port-security-topology.png)
 
@@ -268,7 +261,7 @@ The switch detected the MAC address violation and automatically placed the inter
 
 ## Network Validation
 
-The enterprise network was successfully tested after implementation to verify connectivity, routing, security, and network services.
+The enterprise network was successfully validated after implementation to verify routing, connectivity, security, and network services.
 
 ### Validation Results
 
@@ -288,9 +281,68 @@ The enterprise network was successfully tested after implementation to verify co
 ### Testing Evidence
 
 - DHCP clients successfully received IP addresses.
-- DNS resolved `www.cisco` successfully.
-- HTTP server was accessible through the browser.
-- SSH remote login succeeded from R2 to R1.
-- Static and dynamic routing tables were verified.
-- NAT translation entries were successfully created.
-- Port Security blocked unauthorized devices automatically.
+- DNS successfully resolved **www.cisco**.
+- HTTP service was accessible using the configured hostname.
+- SSH remote login was successfully established from R2 to R1.
+- Static routes, RIPv2 learned routes, and the default route were successfully verified.
+- Static NAT translation entries were successfully created.
+- Port Security automatically blocked unauthorized devices.
+
+---
+
+## Technologies Used
+
+- Cisco Packet Tracer
+- Cisco IOS CLI
+- Routing & Switching
+- VLAN Segmentation
+- IEEE 802.1Q Trunking
+- Router-on-a-Stick
+- Static Routing
+- RIPv2
+- Default Route
+- DHCP
+- DNS
+- HTTP
+- Static NAT
+- SSH
+- Telnet
+- Port Security
+
+---
+
+## IP Addressing Plan
+
+| Network | Subnet | Purpose | Gateway |
+|---------|---------|---------|---------|
+| VLAN 10 | 192.168.10.0/24 | User Network | 192.168.10.1 |
+| VLAN 20 | 192.168.20.0/24 | Server Network | 192.168.20.1 |
+| LAN | 192.168.2.0/24 | Port Security LAN | 192.168.2.1 |
+| R1 ↔ R2 | 10.10.1.0/24 | WAN Link | - |
+| R2 ↔ R3 | 10.10.2.0/24 | WAN Link | - |
+| R2 ↔ R4 | 10.10.3.0/24 | WAN Link | - |
+| R4 ↔ R5 | 192.168.3.0/24 | NAT Link | - |
+| External LAN | 192.168.4.0/24 | External Network | 192.168.4.1 |
+
+---
+
+## Device Inventory
+
+| Device | Role |
+|---------|------|
+| R1 | Headquarters Router (Inter-VLAN Routing & SSH) |
+| R2 | Core Router (Static Routing & RIPv2) |
+| R3 | Branch Router |
+| R4 | Edge Router (Static NAT & Default Route) |
+| R5 | External Router |
+| SW1 | Access Switch (Servers & VLAN 20) |
+| SW2 | Distribution Switch (802.1Q Trunk) |
+| SW3 | Access Switch (Port Security) |
+| HTTP Server | Internal Web Server |
+| DNS Server | Internal DNS Server |
+| DHCP Server | DHCP Service |
+| PCs | Enterprise Clients |
+
+---
+
+
