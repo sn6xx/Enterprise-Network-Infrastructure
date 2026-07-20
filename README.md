@@ -178,27 +178,59 @@ The translation table confirmed successful NAT operation during network communic
 
 ## Routing Configuration
 
-The enterprise network uses multiple routing techniques to enable communication between different network segments.
+The enterprise network uses a hybrid routing design combining **Static Routing**, **RIPv2**, and a **Default Route** to provide connectivity between headquarters, branch offices, and external networks.
 
-### Routing Methods
+### Routing Technologies
 
 - Static Routing
-- RIP (Routing Information Protocol)
+- RIP Version 2 (RIPv2)
 - Default Route
+- Router-on-a-Stick (Inter-VLAN Routing)
 
-### Static Routes Configured on R1
+### Static Routing
 
-| Destination Network | Next Hop |
-|---------------------|----------|
-| 10.10.2.0/24 | 10.10.1.2 |
-| 10.10.3.0/24 | 10.10.1.2 |
-| 192.168.5.0/24 | 10.10.1.2 |
+Static routes were configured between enterprise routers to provide connectivity to selected remote networks.
 
-### Verification
+### Dynamic Routing (RIPv2)
 
-The routing table confirmed successful installation of connected and static routes.
+RIPv2 was implemented on **R2**, **R3**, and **R4** to dynamically exchange routing information between enterprise network segments.
 
-### Routing Table
+Features:
+
+- RIP Version 2
+- No Auto-Summarization
+- Dynamic Route Learning
+
+### Default Route
+
+A default route was configured on **R4** to forward unknown traffic toward the external network.
+
+### Verification Evidence
+
+**R1 - Static Routing**
 
 ![R1 Routing Table](screenshots/r1-routing-table.png)
 
+**R2 - Static + RIPv2**
+
+![R2 Routing Table](screenshots/r2-routing-table.png)
+
+**R3 - Static +  RIPv2**
+
+![R3 Routing Table](screenshots/r3-routing-table.png)
+
+**R4 - RIPv2 + Default Route**
+
+![R4 Routing Table](screenshots/r4-routing-table.png)
+
+**R5 - External Static Routing**
+
+![R5 Routing Table](screenshots/r5-routing-table.png)
+
+**RIP Version 2**
+
+![R2 RIP](screenshots/r2-rip.png)
+
+![R3 RIP](screenshots/r3-rip.png)
+
+![R4 RIP](screenshots/r4-rip.png)
