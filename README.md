@@ -126,3 +126,30 @@ This confirms the successful integration of:
 ### HTTP Test
 
 ![HTTP Test](screenshots/http-test.png)
+
+---
+
+## SSH Remote Management
+
+Secure Shell (SSH) was configured on **Router R1** to provide secure remote administration.
+
+### Configuration
+
+- Local user authentication
+- RSA (2048-bit) encryption keys
+- SSH enabled on VTY lines
+- Domain name configured: `NETWORK.LOCAL`
+
+### Verification
+
+SSH connectivity was successfully verified by establishing a remote session from **R2** to **R1** using:
+
+```text
+ssh -l saja 10.10.1.1
+```
+
+Successful authentication confirmed secure remote management between network devices.
+
+### SSH Test
+
+![SSH Login](screenshots/ssh-login.png)
