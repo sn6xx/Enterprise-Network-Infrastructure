@@ -173,3 +173,32 @@ The translation table confirmed successful NAT operation during network communic
 ### NAT Verification
 
 ![NAT Verification](screenshots/nat-verification.png)
+
+---
+
+## Routing Configuration
+
+The enterprise network uses multiple routing techniques to enable communication between different network segments.
+
+### Routing Methods
+
+- Static Routing
+- RIP (Routing Information Protocol)
+- Default Route
+
+### Static Routes Configured on R1
+
+| Destination Network | Next Hop |
+|---------------------|----------|
+| 10.10.2.0/24 | 10.10.1.2 |
+| 10.10.3.0/24 | 10.10.1.2 |
+| 192.168.5.0/24 | 10.10.1.2 |
+
+### Verification
+
+The routing table confirmed successful installation of connected and static routes.
+
+### Routing Table
+
+![R1 Routing Table](screenshots/r1-routing-table.png)
+
