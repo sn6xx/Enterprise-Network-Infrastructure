@@ -30,9 +30,7 @@ The network was designed to simulate a real enterprise environment with multiple
 - Telnet Remote Access
 - Switch Port Security
 - End-to-End Connectivity Testing
-
 ---
-
 ## VLAN Configuration
 
 The enterprise network was segmented using Virtual LANs (VLANs) to improve security and reduce broadcast traffic.
@@ -43,3 +41,22 @@ The enterprise network was segmented using Virtual LANs (VLANs) to improve secur
 | VLAN 20 | Server Network | HTTP Server, DNS Server, DHCP Server, PC1, PC2 |
 
 A trunk link was configured between SW1 and SW2 to allow VLAN traffic between switches.
+---
+## VLAN & Inter-VLAN Routing
+
+The enterprise network was segmented using VLANs to improve network organization and security.
+
+| VLAN | Purpose |
+|------|---------|
+| VLAN 10 | User Network |
+| VLAN 20 | Server Network |
+
+Inter-VLAN Routing was implemented using the Router-on-a-Stick technique.
+
+Two IEEE 802.1Q trunk links were configured:
+
+- SW1 ↔ SW2
+- SW2 ↔ R1
+
+Router R1 was configured with subinterfaces for VLAN 10 and VLAN 20 to enable communication between VLANs.
+
