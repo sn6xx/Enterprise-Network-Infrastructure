@@ -153,3 +153,23 @@ Successful authentication confirmed secure remote management between network dev
 ### SSH Test
 
 ![SSH Login](screenshots/ssh-login.png)
+
+---
+
+## Network Address Translation (NAT)
+
+Static Network Address Translation (Static NAT) was implemented to provide address translation between internal and external networks.
+
+### NAT Translation
+
+| Inside Local | Inside Global |
+|--------------|---------------|
+| 192.168.4.2 | 192.168.3.10 |
+
+### Verification
+
+The translation table confirmed successful NAT operation during network communication.
+
+### NAT Verification
+
+![NAT Verification](screenshots/nat-verification.png)
