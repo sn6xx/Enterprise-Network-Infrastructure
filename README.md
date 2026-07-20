@@ -234,3 +234,33 @@ A default route was configured on **R4** to forward unknown traffic toward the e
 ![R3 RIP](screenshots/r3-rip.png)
 
 ![R4 RIP](screenshots/r4-rip.png)
+
+---
+
+## Port Security
+
+Port Security was configured on access switch ports to prevent unauthorized devices from accessing the enterprise network.
+
+### Security Features
+
+- Maximum Secure MAC Address: 1
+- Sticky MAC Address Learning
+- Violation Mode: Shutdown
+- Unauthorized devices automatically blocked
+
+### Security Test
+
+An unauthorized device (**PC5**) was connected to a protected switch port.
+
+The switch detected the MAC address violation and automatically placed the interface into a **shutdown** state, successfully preventing unauthorized network access.
+
+### Verification Evidence
+
+**Unauthorized Device Attempt**
+
+![Unauthorized Device](screenshots/port-security-topology.png)
+
+**Port Security Status**
+
+![Port Security Status](screenshots/port-security-status.png)
+
