@@ -12,6 +12,8 @@ The network was designed to simulate a real enterprise environment with multiple
 
 ![Network Topology](screenshots/topology.png)
 
+--- 
+
 ## Features
 
 - Multi-router enterprise network topology
@@ -28,3 +30,16 @@ The network was designed to simulate a real enterprise environment with multiple
 - Telnet Remote Access
 - Switch Port Security
 - End-to-End Connectivity Testing
+
+---
+
+## VLAN Configuration
+
+The enterprise network was segmented using Virtual LANs (VLANs) to improve security and reduce broadcast traffic.
+
+| VLAN | Purpose | Connected Devices |
+|------|---------|-------------------|
+| VLAN 10 | User Network | PC3, PC4 |
+| VLAN 20 | Server Network | HTTP Server, DNS Server, DHCP Server, PC1, PC2 |
+
+A trunk link was configured between SW1 and SW2 to allow VLAN traffic between switches.
