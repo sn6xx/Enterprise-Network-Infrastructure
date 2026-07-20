@@ -102,3 +102,27 @@ The DNS server allows clients to access the web server using its hostname instea
 ### DNS Server
 
 ![DNS Server](screenshots/dns-server.png)
+
+---
+
+## HTTP Service
+
+An internal web server was deployed and successfully accessed through DNS hostname resolution.
+
+### Validation
+
+The website was accessed using:
+
+```
+http://www.cisco
+```
+
+This confirms the successful integration of:
+
+- DNS name resolution
+- HTTP service
+- End-to-end network connectivity
+
+### HTTP Test
+
+![HTTP Test](screenshots/http-test.png)
